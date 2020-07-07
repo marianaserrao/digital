@@ -1,0 +1,121 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>PiuPiuwer</title>
+    <link rel="shortcut icon" href="{% static 'usuarios/img/users/miniPiu.svg' %}">
+    <link rel="stylesheet" href="{% static 'usuarios/css/Users/searchBar.css' %}">
+    <link rel="stylesheet" href="{% static 'usuarios/css/global.css' %}">
+    <link rel="stylesheet" href="{% static 'usuarios/css/Users/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'usuarios/css/Users/piuStyle.css' %}">
+</head>
+
+<body>
+    <div class='wrap'>
+        <header class='pageHeader'>
+            <a href="{% url 'feed' %}" class='logo'>
+                <img src="{% static 'usuarios/img/users/logoReta.svg' %}" alt="PiuPiuwer" class='logo'>
+            </a>
+            <div class='searchBox'>
+                <div class='searchBoxContainer'>
+                    <input class='searchBar' type="text" placeholder="Pesquisar usuários...">
+                    <img src="{% static 'usuarios/img/users/searchIcon.svg' %}" alt="button" class='searchButton'>
+                </div>
+            </div>
+        </header>
+
+        <div expand class='searchedUsers'></div>
+
+        <div class='menuBar'>
+            <div class='bemVindoNome'>Olá <strong id='user-name'>{{user.name}}</strong>,</div>
+            <div class='leftInfos'>
+                <a class='profileName' href="{% url 'feed' %}">Explorar</a>
+                <div class='profile'>
+                    <a class='profileName' href="{% url 'profile' %}">Meu Perfil</a>
+                    <div class='profileImgDiv'>
+                        {% if not user.picture %}
+                        <img src="{% static 'usuarios/img/users/elipse.png' %}" alt="">
+                        {% else %}
+                        <img src="{{user.picture.url}}" alt="" class='profileImg'>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class='logout'>
+                    <a href="{% url 'logout' %}">
+                        <img src="{% static 'usuarios/img/users/logout.svg' %}" alt="" class='logoutImg'>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- O navegador Firefox pode apresentar problemas para carregar as imagens -->
+
+        <div class='userArea'>
+            {% for user in users %}
+            {% if usuario != user %}
+            <div class='users'>
+                <header class="userDiv">
+                    <div class="userInfo">
+                        {% if not user.picture %}
+                        <div class="userImg">
+                            <img src="{% static 'usuarios/img/users/elipse.png' %}">
+                        </div>
+                        {% else %}
+                        <div class="userImg">
+                            <img src="{{user.picture.url}}" class="profilePicture">
+                        </div>
+                        {% endif %}
+                        <div class="userInfoText">
+                            <a href='../profile/{{user.username}}' class="userInfoName">{{user.name}}</a>
+                            <div class="userInfoUserName">@{{user.username}}</div>
+                        </div>
+                        <div class='buttons'>
+                            {% if usuario in user.followers.all %}
+                            <a href='../unfollow/{{user.pk}}' class="followButton" id="unfollowButton">Seguindo</a>
+                            {% elif usuario in user.follow_requests.all %}
+                            <a href='../unrequest/{{user.pk}}' class="followButton" id="requestButton">Solicitado</a>
+                            {% else %}
+                            <a href='../follow/{{user.pk}}' class="followButton" id="followButton">Seguir</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </header>
+                <!-- <div class="piuContent">
+                            <div class="piuText">{{post.content}}</div>
+                            <div class="likeDiv">
+                                <div class="piuHourInfo">Postado em {{post.date}}</div>
+                                {% if post.user == user %}
+                                <a href='../delete/{{post.pk}}' class="piuButtons" id="deleteButton">
+                                    <p class="deleteText">Delete</p>
+                                    <img class="deleteIcon" src="{% static 'pius/img/feed/close.svg' %}">
+                                </a>
+                                {% endif %}
+                                <a href='../like/{{post.pk}}' class="piuButtons" id= "likeButton" liked="false">
+                                    <p class="likeText" id="likesNumber">{{post.likes}}</p>
+                                    <img class="likeIcon" src="{% static 'pius/img/feed/like.svg' %}">
+                                </a>
+                                <button class="piuButtons" id= "deslikeButton" liked="false">
+                                    <p class="likeText" id="deslikesNumber">{{post.likes}}</p>
+                                    <img class="likeIcon" src="{% static 'pius/img/feed/like.svg' %}">
+                                </button>
+                            </div>
+                        </div> -->
+            </div>
+            {% endif %}
+            {% endfor %}
+            <!-- {% for following_user in following_users %}
+            <p>{{user.name}}</p>
+            {%endfor%} -->
+        </div>
+    </div>
+
+
+    <script src="{% static 'usuarios/js/users/filtro.js' %}"></script>
+
+</body>
+
+</html>

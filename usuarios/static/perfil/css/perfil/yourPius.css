@@ -1,0 +1,14 @@
+.userPius {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.yourPius {
+    color: white;
+    margin-bottom: 60px;
+}
+
+.insertPius {
+    width: 80%;
+}

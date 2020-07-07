@@ -1,0 +1,194 @@
+.users {
+    position: relative;
+    width: 100%;
+    background-color: #36404A;
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 35px;
+
+    box-shadow: 1px 1px 45px rgba(0, 0, 0, 0.05);
+}
+
+.userDiv {
+    height: 70px;
+    display: flex;
+}
+
+.userInfo {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    width: 100%;
+}
+
+.userImg {
+    height: 50px;
+    width: 50px;
+    border-radius: 45px;
+    margin-right: 10px;
+    background-position: center center; 
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profilePicture{
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 5px;
+}
+
+.userInfoName {
+    color: #CDCDCE;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.userInfoUserName {
+    color: #CDCDCE;
+    margin-top: 5px;
+    text-decoration: none;
+}
+
+.followButton {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: 0;
+    background-color: #323B44;
+    border-radius: 8px;
+    width: 100px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    transition: 0.3s;
+    text-decoration: none;
+    color: white;
+    margin-right: 16px;
+}
+
+.buttons {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+}
+
+#unfollowButton {
+    opacity: 0.98;
+    background-color: #3BAFDA;
+}
+
+#requestButton {
+    color: #3BAFDA;
+}
+
+#requestButton:hover {
+    color: white;
+    background-color: #323B44;
+}
+
+.followButton:hover {
+    opacity: 0.98;
+    background-color: #3BAFDA;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 790px) {
+    .followButton {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: 100px;
+    
+        transition: 0.3s;
+    }
+}
+
+.liked {
+    background-color: #3BAFDA;
+}
+
+.infoDiv {
+    width: 150px;
+    border: solid 1px #36404A;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #3C4650;
+    padding: 3px;
+
+    box-shadow: 5px 5px 45px rgba(0, 0, 0, 0.1);
+
+    z-index: 99;
+    position: absolute;
+    right: 39px;
+    top: 33px;
+}
+
+.editRow {
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    cursor: pointer;
+}
+
+.editRow:hover {
+    background-color: #36404A;
+}
+
+.delRow {    
+    cursor: pointer;
+    font-weight: bold;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    color: rgb(255, 72, 72);
+}
+
+.delRow:hover {
+    background-color: #36404A;
+}
+
+.infoRow:hover {
+    display: show;
+}
+
+.editInput {
+    border: 0;
+    background-color: #323B44;
+    color: white;
+    padding: 10px;
+
+    width: 100%;
+}
+
+.editButton {
+    background-color: #3BAFDA;
+    border: 0;
+    color: white;
+    font-weight: bold;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.lowOpacity {
+    opacity: 0.3;
+}
+
+.denyButton {
+    margin-left: auto;
+}
+
+
+.userArea {
+    width: 70%;
+    margin: 100px auto;
+}
+
+.yourPius {
+    margin-top: 30px;
+    margin-bottom: -50px;
+}

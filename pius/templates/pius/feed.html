@@ -1,0 +1,127 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>PiuPiuwer</title>
+    <link rel="shortcut icon" href="{% static 'pius/img/feed/miniPiu.svg' %}">
+    <link rel="stylesheet" href="{% static 'pius/css/feed/searchBar.css' %}">
+    <link rel="stylesheet" href="{% static 'pius/css/global.css' %}">
+    <link rel="stylesheet" href="{% static 'pius/css/feed/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'pius/css/feed/piuStyle.css' %}">
+</head>
+
+<body>
+    <div class='wrap'>
+        <header class='pageHeader'>
+            <a href="{% url 'feed' %}" class='logo'>
+                <img src="{% static 'pius/img/feed/logoReta.svg' %}" alt="PiuPiuwer" class='logo'>
+            </a>
+            <div class='searchBox'>
+                <div class='searchBoxContainer'>
+                    <input class='searchBar' type="text" placeholder="Pesquisar postagens...">
+                    <img src="{% static 'pius/img/feed/searchIcon.svg' %}" alt="button" class='searchButton'>
+                </div>
+            </div>
+        </header>
+
+        <div expand class='searchedUsers'></div>
+
+        <div class='menuBar'>
+            <div class='bemVindoNome'>Olá <strong id='user-name'>{{user.name}}</strong>,</div>
+            <div class='leftInfos'>
+                <a class='profileName' href="{% url 'users' %}">Buscar Usuários</a>
+                <div class='profile'>
+                    <a class='profileName' href="{% url 'profile' %}">Meu Perfil</a>
+                    <div class='profileImgDiv'>
+                        {% if not user.picture %}
+                        <img class="profileImg" src="{% static 'pius/img/feed/elipse.png' %}" alt="">
+                        {% else %}
+                        <img src="{{user.picture.url}}" alt="" class='profileImg'>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class='logout'>
+                    <a href="{% url 'logout' %}">
+                        <img src="{% static 'pius/img/feed/logout.svg' %}" alt="" class='logoutImg'>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- O navegador Firefox pode apresentar problemas para carregar as imagens -->
+        <div class='content'>
+            <div class='insertPiuArea'>
+                <form method="POST" class='piuInput'>
+
+                    {% csrf_token %}
+                    {{ form.content }}
+
+                    <div class='btnAndCounter'>
+                        <p class='pCounter'></p>
+                        <button type="submit" class='btnSendPiu'>Enviar Piu</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class='piuArea'>
+                {% for post in posts %}
+                    {% if post.user in user.following.all or post.user == user %}
+                        <div class='piu'>
+                            <header class="piuHeader">
+                                <div class="userInfo">
+                                    {% if not post.user.picture %}
+                                    <div class="userImgInPiu">
+                                        <img src="{% static 'pius/img/feed/elipse.png' %}">  
+                                    </div>
+                                    {% else %}
+                                    <div class="userImgInPiu">
+                                        <img class="profilePicture" src="{{post.user.picture.url}}">
+                                    </div>
+                                    {% endif %}
+                                    <div class="userInfoText">
+                                        <a href='../../usuarios/profile/{{post.user.username}}' class="userInfoName">{{post.user.name}}</a>
+                                        <div class="userInfoUserName">@{{post.user.username}}</div>
+                                    </div>
+                                </div>
+                            </header>
+                            <div class="piuContent">
+                                <div class="piuText">{{post.content}}</div>
+                                <div class="likeDiv">
+                                    <div class="piuHourInfo">Postado em {{post.date}}</div>
+                                    {% if post.user == user %}
+                                    <a href='../delete/{{post.pk}}' class="piuButtons" id="deleteButton">
+                                        <p class="deleteText">Delete</p>
+                                        <img class="deleteIcon" src="{% static 'pius/img/feed/close.svg' %}">
+                                    </a>
+                                    {% endif %}
+                                    {% if user in post.likes.all %}
+                                    <a href='../deslike/{{post.pk}}' class="piuButtons" id= "deslikeButton">
+                                        <p class="likeText" id="likesNumber">{{post.like_numbers}}</p>
+                                        <img class="likeIcon" src="{% static 'pius/img/feed/like.svg' %}">
+                                    </a>
+                                    {% else %}
+                                    <a href='../like/{{post.pk}}' class="piuButtons" id= "likeButton">
+                                        <p class="likeText" id="likesNumber">{{post.like_numbers}}</p>
+                                        <img class="likeIcon" src="{% static 'pius/img/feed/like.svg' %}">
+                                    </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+
+    <script src="{% static 'pius/js/feed/filtro.js' %}"></script>
+    <script src="{% static 'pius/js/feed/sendingPiu.js' %}"></script>
+
+</body>
+
+</html>

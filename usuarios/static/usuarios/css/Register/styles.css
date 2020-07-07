@@ -1,0 +1,158 @@
+.register-container {
+    width: 100%;
+    max-width: 1120px;
+    height: 100vh;
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.register-container .content {
+    width: 100%;
+    padding: 60px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.register-container .content section {
+    width: 100%;
+    max-width: 380px;
+}
+
+.register-container .content section h1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+.register-container .content section p {
+    font-size: 18px;
+    color: #CCC;
+    line-height: 22px;
+}
+
+.register-container .content form {
+    width: 100%;
+    max-width: 450px;
+    margin-top: 100px;
+}
+
+form input {
+    width: 100%;
+    height: 45px;
+    color: #333;
+    border: solid 1px #dcdce6;
+    border-radius: 8px;
+    padding: 0 24px;
+    margin-bottom: 16px;
+}
+
+.register-container .content form .input-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.register-container .content form .input-group input {
+    width: 25%
+}
+
+.register-container .content form .input-group div {
+    color: #fff;
+}
+
+.button {
+    width: 100%;
+    height: 45px;
+    background-color: #3BAFDA;
+    border-radius: 8px;
+    border: 0;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    line-height: 45px;
+    transition: filter 0.2s;
+    margin-bottom: 10px;
+}
+
+.button:hover {
+    filter: brightness(80%);
+}
+
+.register-container section div a {
+    display: flex;
+    align-items: center;
+    color: #ddd;
+    text-decoration: none;
+    margin-top: 40px;
+    font-weight: 500;
+}
+
+.register-container section div a img {
+    height: 25px;
+    width: 25px;
+    margin-right: 10px;
+}
+
+.register-container section div a:hover {
+    opacity: 0.8;
+}
+
+@media screen and (max-width: 780px) {
+    .register-container .content section h1 {
+        font-size: 28px;
+    }
+
+    .content {
+        flex-direction: column;
+    }
+
+    .logo {
+        width: 100%
+    }
+
+    .register-container {
+        height: 100%;
+    }
+
+    .register-container .content {
+        margin-top: 0;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-top: 0px;
+    }
+
+    .logo {
+        width: 90%
+    }
+
+    .register-container .content form {
+        margin-top: 40px;
+    }
+}
+
+.red-border {
+    border: solid 2px rgb(255, 72, 72);
+}
+
+.error {
+    font-size: 15px;
+    color: hsl(0, 100%, 45%);
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+
+.success {
+    font-size: 15px;
+    color: rgb(51, 190, 44);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

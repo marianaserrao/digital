@@ -1,0 +1,68 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="{% static 'usuarios/css/Register/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'usuarios/css/global.css' %}">
+    <title>PiuPiuwer</title>
+</head>
+
+<body>
+    <div class='register-container'>
+        <div class="content">
+            <section class='form'>
+                <img class="logo" src="{% static 'usuarios/img/logoImg.png' %}" alt="Piu Logo">
+
+                <div>
+                    <h1>Faça seu cadastro!</h1>
+
+                    <p>Faça seu cadastro, entre na plataforme e conecte-se com o mundo compartilhando seus pius</p>
+
+                    <a href="{% url 'login' %}">
+                        <img src="{% static 'usuarios/img/Icons/back.svg' %}" alt="">
+                        Já tenho cadastro
+                    </a>
+
+                </div>
+            </section>
+
+            <form method="POST">
+                {% csrf_token %}
+
+                {% if form.errors %}
+                <p class="error">Erro no cadastro! Username ou email ja utilizados!</p>
+                {% endif %}
+
+                <div>
+                    <label>E-mail</label>
+                    {{ form.email }}
+                </div>
+                <div>
+                    <label>Nome</label>
+                    {{ form.name }}
+                </div>
+                <div>
+                    <label>Username</label>
+                    {{ form.username }}
+                </div>
+                <div>
+                    <label>Senha</label>
+                    {{ form.password1 }}
+                </div>
+                <div>
+                    <label>Repita a senha</label>
+                    {{ form.password2 }}
+                </div>
+                <button class="button">Cadastrar</button>
+            </form>
+        </div>
+
+        <script src="{% static 'usuarios/js/Register/script.js' %}"></script>
+    </div>
+</body>
+
+</html>

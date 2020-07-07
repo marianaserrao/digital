@@ -1,0 +1,179 @@
+.wrap {
+    position: relative;
+    width: 100%;
+    max-width: 1120px;
+    box-shadow: 0px 0px 45px rgba(0, 0, 0, 0.12);
+    padding-bottom: 1px;
+    
+    background-color: #323B44;
+
+    min-height: 100vh;
+    margin: 0 auto;
+}
+
+.logo {
+    height: 100%;
+    margin-left: 20px;
+}
+
+.pageHeader {
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+.menuBar {
+    background-color: #36404A;
+    height: 80px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+
+    display: flex;
+    align-items: center;
+}
+
+.bemVindoNome {
+    font-size: 22px;
+    margin-left: 25px;
+    color: #fff;
+}
+
+.leftInfos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 35%;
+    margin-left: auto;
+    margin-right: 25px;
+    color: white;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.profileName {
+    color: white;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.profileImg{
+    max-height: 50px;
+    max-width: 50px;
+    border-radius: 5px;
+    margin: auto;
+}
+
+.logout {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 790px) {
+    .pageHeader {
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .logo {
+        height: 50%;
+        margin: 0px;
+    }
+
+    .menuBar {
+        background-color: #36404A;
+        height: 120px;
+        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+    
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .bemVindoNome {
+        margin: 20px;
+        font-size: 22px;
+        color: #fff;
+    }
+    
+    .leftInfos {
+        width: 100%;
+        justify-content: space-around;
+        display: flex;
+        padding-left: 20px;
+        padding-right: 20px;
+        align-items: center;
+        color: white;
+        margin-left: auto;
+        margin-right: 25px;
+    }
+    
+    .profile {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+    
+    .profileImg {
+        display: none;
+    }
+}
+
+.loading {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin: 0px auto;
+    width: 100%;
+    padding: 15px;
+    font-weight: bold;
+}
+
+.cincXcinc {
+    height: 50px;
+    width: 50px;
+    margin-bottom: 40px;
+}
+
+.red-border {
+    border: solid 2px rgb(255, 72, 72);
+}
+
+.whiteBorder {
+    border: solid 1px white;
+}
+
+.btnSendPiu {
+    width: 250px;
+    height: 45px;
+    background-color: #3BAFDA;
+    border-radius: 8px;
+    border: 0;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    line-height: 45px;
+    transition: filter 0.3s;
+    margin-left: auto;
+    margin-top: 15px;
+
+}
+
+.leftInfos {
+    display: flex;
+    padding-left: 20px;
+    padding-right: 20px;
+    align-items: center;
+    color: white;
+    margin-left: auto;
+    margin-right: 25px;
+}
+
+.changePasswordButton {
+    margin-left: auto;
+}

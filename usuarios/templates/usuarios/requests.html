@@ -1,0 +1,103 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>PiuPiuwer</title>
+    <!-- <link rel="shortcut icon" href="../../assets/Icons/miniPiu.svg"> -->
+    <link rel="stylesheet" href="{% static 'usuarios/css/global.css' %}">
+    <link rel="stylesheet" href="{% static 'perfil/css/perfil/searchBar.css' %}">
+    <link rel="stylesheet" href="{% static 'perfil/css/perfil/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'pius/css/feed/piuStyle.css' %}">
+    <link rel="stylesheet" href="{% static 'perfil/css/perfil/content.css' %}">
+    <link rel="stylesheet" href="{% static 'perfil/css/perfil/yourPius.css' %}">
+    <link rel="stylesheet" href="{% static 'usuarios/css/users/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'usuarios/css/users/piuStyle.css' %}">
+</head>
+
+<body>
+    <div class='wrap'>
+        <header class='pageHeader'>
+            <a href="{% url 'feed' %}" class='logo'>
+                <img src="{% static 'usuarios/img/logoReta.svg' %}" alt="PiuPiuwer" class='logo'>
+            </a>
+            <div class='searchBox'>
+                <div class='searchBoxContainer'>
+                    <input class='searchBar' type="text" placeholder="Pesquisar usuários...">
+                    <img src="{% static 'usuarios/img/Icons/searchIcon.svg' %}" alt="button" class='searchButton'>
+                </div>
+            </div>
+        </header>
+
+        <div expand class='searchedUsers'></div>
+
+        <div class='menuBar'>
+            <div class='bemVindoNome'>Olá <strong id='user-name'>{{user.name}}</strong>,</div>
+            <div class='leftInfos'>
+                <a class='profileName' href="{% url 'feed' %}">Explorar</a>
+                <div class='profile'>
+                    <a class='profileName' href="{% url 'profile' %}">Meu Perfil</a>
+                    <div class='profileImgDiv'>
+                        {% if not user.picture %}
+                        <img src="{% static 'usuarios/img/users/elipse.png' %}" alt="">
+                        {% else %}
+                        <img src="{{user.picture.url}}" alt="" class='profileImg'>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class='logout'>
+                    <a href="{% url 'logout' %}">
+                        <img src="{% static 'usuarios/img/users/logout.svg' %}" alt="" class='logoutImg'>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- O navegador Firefox pode apresentar problemas para carregar as imagens -->
+        <div class='userPius'>
+            <h1 class='yourPius'>Solicitações Pendentes</h1>
+
+            <div class='userArea'>
+
+                {% for request in requests %}
+                <div class='users'>
+                    <header class="userDiv">
+                        <div class="userInfo">
+                            {% if request.picture == '' %}
+                            <div class="userImg">
+                                <img src="{% static 'usuarios/img/users/elipse.png' %}">
+                            </div>
+                            {% else %}
+                            <div class="userImg">
+                                <img src="{% static 'usuarios/img/users/elipse.png' %}">
+                            </div>
+                            {% endif %}
+                            <div class="userInfoText">
+                                <a href='../profile/{{user.username}}' class="userInfoName">{{request.name}}</a>
+                                <div class="userInfoUserName">@{{request.username}}</div>
+                            </div>
+                            <div class='buttons'>
+                                <a href='../acceptFollow/{{request.pk}}' class="followButton"
+                                    id="unfollowButton">Aceitar</a>
+                                <a href='../denyFollow/{{request.pk}}' class="denyButton" id="requestButton">Negar</a>
+                            </div>
+                        </div>
+                    </header>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- <script src='../../services/api.js'></script>
+    <script src='./createPiu.js'></script>
+    <script src='./searchBar.js'></script>
+    <script src='./insertMyPius.js'></script>
+    <script src='./script.js'></script> -->
+</body>
+
+</html>

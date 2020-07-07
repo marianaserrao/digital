@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="{% static 'usuarios/css/Login/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'usuarios/css/global.css' %}">
+    <base href="/">
+    <title>PiuPiuwer</title>
+</head>
+
+<body>
+    <div class='login-container'>
+        <section class='form'>
+            <img class="logo" src="{% static 'usuarios/img/logoImg.png' %}" alt="Piu Logo">
+
+            <form method="POST">
+                {% csrf_token %}
+                {{ form }}
+
+                <button class="button" type="submit">Entrar</button>
+
+                <a href="{% url 'register' %}">
+                    <img src="{% static 'usuarios/img/Icons/irParaCadastro.svg' %}" alt="">
+                    Não tenho cadastro
+                </a>
+
+                <a href="{% url 'reset-password' %}">
+                    <img src="{% static 'usuarios/img/Icons/esqueciSenha.svg' %}" alt="">
+                    Esqueci minha senha
+                </a>
+            </form>
+        </section>
+
+        <img class="imgPiu" src="{% static 'usuarios/img/piuImg.png' %}" alt="PiuPiuwer">
+    </div>
+
+    <script src="{% static 'usuarios/js/Login/script.js' %}"></script>
+</body>
+
+</html>

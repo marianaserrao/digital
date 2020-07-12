@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'w0ws=111+on_bmt-e2fd55bpws2$bq-pvtv%pz%ddk6s&!chjx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -86,8 +86,8 @@ else:
     DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'blogdb',
-        'USER': 'blog_admin',
+        'NAME': 'digitaldb',
+        'USER': 'mari',
         'PASSWORD': 'polijunior',
         'HOST': 'localhost',
         'PORT': '',
@@ -131,17 +131,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static/'),
-]
-
 STATIC_URL = '/static/'
 
-STATIC_ROOT = '/home/mari/blog/piupiuwerdjango/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = '/home/mari/blog/piupiuwerdjango/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 AUTH_USER_MODEL = 'usuarios.User'
 LOGIN_REDIRECT_URL = 'login_redirect'

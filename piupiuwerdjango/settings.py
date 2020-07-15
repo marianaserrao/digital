@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'piupiuwerdjango.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'digitaldb',
+        'NAME': 'digital',
         'USER': 'mari',
         'PASSWORD': 'polijunior',
         'HOST': 'localhost',

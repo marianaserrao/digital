@@ -14,3 +14,5 @@ class CreatePiuForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ['content']
+
+#mari

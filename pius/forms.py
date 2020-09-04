@@ -16,3 +16,4 @@ class CreatePiuForm(forms.ModelForm):
         fields = ['content']
 
 #mari
+#teste
